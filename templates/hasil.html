@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Hasil Tes - Mindera{% endblock %}
+
+{% block content %}
+<div class="hasil-page-new bg-light-blue">
+    <div class="hasil-container-new">
+        <div class="hasil-card-new">
+            <div class="profile-section">
+                <div class="profile-icon-new">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h2>Hai, <span class="username-highlight">{{ nama }}</span></h2>
+                
+                {% if jenis == 'bakat' and persentase %}
+                <div class="badge-kategori">{{ kategori_badge }}</div>
+                
+                <div class="progress-circle">
+                    <div class="progress-value">{{ persentase }}%</div>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="hasil-description-new">
+                <p>{{ deskripsi }}</p>
+            </div>
+
+            {% if rekomendasi_pekerjaan %}
+            <div class="rekomendasi-section">
+                <h4>Rekomendasi pekerjaan:</h4>
+                <div class="rekomendasi-tags">
+                    {% for pekerjaan in rekomendasi_pekerjaan %}
+                    <span class="tag-pekerjaan">{{ pekerjaan }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="action-buttons-new">
+                <a href="{{ url_for('index') }}" class="btn-beranda">
+                    <i class="fas fa-home"></i> Beranda
+                </a>
+                <button onclick="downloadPDF()" class="btn-download-new">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+function downloadPDF() {
+    const element = document.querySelector('.hasil-card-new');
+    const buttons = document.querySelector('.action-buttons-new');
+    
+    // Hide buttons before download
+    buttons.style.display = 'none';
+    
+    const opt = {
+        margin: 10,
+        filename: 'Hasil_Tes_{{ jenis|title }}_{{ nama }}.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    
+    html2pdf().set(opt).from(element).save().then(() => {
+        // Show buttons again after download
+        buttons.style.display = 'flex';
+    });
+}
+</script>
+
+{% endblock %}
