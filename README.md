@@ -1,1 +1,3 @@
 # Mindera
+**Perancangan Website Rekomendasi Karier Berbasis Tes Minat dan Bakat Untuk Meminimalisir Mismatch Ketenagakerjaan Sebagai Pendukung Ekonomi Digital**
+Solusi yang diusulkan untuk mengatasi keterbatasan akses informasi dan peluang kerja bagi generasi muda dari keluarga berpenghasilan rendah adalah pengembangan platform tes minat bakat digital yang gratis, dan mudah digunakan. Melalui sistem analisis hasil tes, platform menghasilkan rekomendasi pekerjaan yang sesuai dengan potensi, karakter, dan kemampuan pengguna. Dengan pendekatan ini, generasi muda dapat memperoleh arah karier yang jelas, mengurangi ambiguitas, dan meningkatkan peluang mereka untuk memperoleh pekerjaan layak yang selaras dengan kebutuhan ekonomi saat ini.
